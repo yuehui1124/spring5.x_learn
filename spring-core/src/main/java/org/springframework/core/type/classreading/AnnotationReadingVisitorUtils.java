@@ -122,7 +122,7 @@ abstract class AnnotationReadingVisitorUtils {
 			LinkedMultiValueMap<String, AnnotationAttributes> attributesMap,
 			Map<String, Set<String>> metaAnnotationMap, String annotationName) {
 
-		// Get the unmerged list of attributes for the target annotation.
+		// Get the unmerged list of attributes for the target annotation.获取目标注释的未合并属性列表。
 		List<AnnotationAttributes> attributesList = attributesMap.get(annotationName);
 		if (attributesList == null || attributesList.isEmpty()) {
 			return null;

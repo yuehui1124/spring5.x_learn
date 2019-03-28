@@ -99,6 +99,7 @@ public class BeanDefinitionReaderUtils {
 	 * @return the generated bean name
 	 * @throws BeanDefinitionStoreException if no unique name can be generated
 	 * for the given bean definition
+	 * 生成bean的名称的 不用管
 	 */
 	public static String generateBeanName(
 			BeanDefinition definition, BeanDefinitionRegistry registry, boolean isInnerBean)
@@ -146,9 +147,10 @@ public class BeanDefinitionReaderUtils {
 			BeanDefinitionHolder definitionHolder, BeanDefinitionRegistry registry)
 			throws BeanDefinitionStoreException {
 
-		// Register bean definition under primary name.  在主名称下注册bean定义
+		// Register bean definition under primary name.
+		// 在主名称下注册bean定义
 		String beanName = definitionHolder.getBeanName();
-		//将 holder 拆分
+		//todo 将 holder 拆分  这里很有意思
 		registry.registerBeanDefinition(beanName, definitionHolder.getBeanDefinition());
 
 		//如果有 注册别名

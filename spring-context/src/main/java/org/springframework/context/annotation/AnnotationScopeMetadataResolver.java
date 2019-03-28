@@ -95,11 +95,11 @@ public class AnnotationScopeMetadataResolver implements ScopeMetadataResolver {
 
 			}
 		}
-		System.out.println("传进来的:"+definition.getBeanClassName());
-		System.out.println("默认的范围"+definition.getScope());
-		System.out.println("ScopedProxyMode处理后的"+metadata.getScopedProxyMode());
-		System.out.println("scopedName"+metadata.getScopeName());
-		System.out.println("返回的metadata"+metadata);
+		System.out.println("传进来的bean名称:"+definition.getBeanClassName());
+		System.out.println("默认的范围："+definition.getScope());
+		System.out.println("ScopedProxyMode处理后的："+metadata.getScopedProxyMode());
+		System.out.println("scopedName："+metadata.getScopeName());
+		System.out.println("返回的metadata："+metadata);
 		return metadata;
 	}
 

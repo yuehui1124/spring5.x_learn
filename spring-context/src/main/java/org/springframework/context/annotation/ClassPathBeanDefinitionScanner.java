@@ -243,13 +243,14 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 
 
 	/**
+	 * 在指定的基础包中执行扫描。
 	 * Perform a scan within the specified base packages.
 	 * @param basePackages the packages to check for annotated classes
 	 * @return number of beans registered
 	 */
 	public int scan(String... basePackages) {
 		int beanCountAtScanStart = this.registry.getBeanDefinitionCount();
-
+		//todo 先从这里进----------------------------------------
 		doScan(basePackages);
 
 		// Register annotation config processors, if necessary.
@@ -276,13 +277,16 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 		 * 把符合条件的转化为bd文件
 		 */
 		for (String basePackage : basePackages) {
-			//findCandidateComponents 找到候选组件  点进去看看
+			//findCandidateComponents 找到候选组件  看不看的吧，反正点进去也看不懂
 			Set<BeanDefinition> candidates = findCandidateComponents(basePackage);
 			for (BeanDefinition candidate : candidates) {
-				//解析
+				//用来解析的解析 我觉的也不用管
 				ScopeMetadata scopeMetadata = this.scopeMetadataResolver.resolveScopeMetadata(candidate);
+
 				candidate.setScope(scopeMetadata.getScopeName());
+				//生成bean的名字 不用管他怎么生成的  反正就是生成了
 				String beanName = this.beanNameGenerator.generateBeanName(candidate, this.registry);
+
 				if (candidate instanceof AbstractBeanDefinition) {
 					postProcessBeanDefinition((AbstractBeanDefinition) candidate, beanName);
 				}
@@ -293,7 +297,10 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 					BeanDefinitionHolder definitionHolder = new BeanDefinitionHolder(candidate, beanName);
 					definitionHolder =
 							AnnotationConfigUtils.applyScopedProxyMode(scopeMetadata, definitionHolder, this.registry);
+
 					beanDefinitions.add(definitionHolder);
+					//todo ----看这里，其他的无所谓吧---
+					//注册bean定义
 					registerBeanDefinition(definitionHolder, this.registry);
 				}
 			}
@@ -315,12 +322,14 @@ public class ClassPathBeanDefinitionScanner extends ClassPathScanningCandidateCo
 	}
 
 	/**
+	 * 使用给定的注册表注册指定的bean。
 	 * Register the specified bean with the given registry.
 	 * <p>Can be overridden in subclasses, e.g. to adapt the registration
 	 * process or to register further bean definitions for each scanned bean.
 	 * @param definitionHolder the bean definition plus bean name for the bean
 	 * @param registry the BeanDefinitionRegistry to register the bean with
 	 */
+	//todo ----进方法----
 	protected void registerBeanDefinition(BeanDefinitionHolder definitionHolder, BeanDefinitionRegistry registry) {
 		BeanDefinitionReaderUtils.registerBeanDefinition(definitionHolder, registry);
 	}
