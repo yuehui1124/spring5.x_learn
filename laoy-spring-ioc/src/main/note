@@ -1,0 +1,7 @@
+ioc
+ioc 是面向对象编程的一种设计手段
+di是实现ioc的一种手段 依赖注入 dependency injection
+dl是依赖查找
+
+依赖:
+A类中 有一个B属性  A依赖B

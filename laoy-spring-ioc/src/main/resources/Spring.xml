@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:p="http://www.springframework.org/schema/p" xmlns:c="http://www.springframework.org/schema/c"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd"
+		default-autowire="byType">
+	<!--default-autowire="byType"
+	@Autowired 默认使用byType 如果找不到byType就去找byName
+	@Resource 默认根据 对象的名字 不同过byType和byName
+	只涉及到 set注入
+	因为注入的是接口(也就是setDao)
+	他会扫描该接口下所有类,当spring同时管理两个类时,他会报错,分不清是哪个类
+	所以 这时候应该使用 default-autowire="byName"
+	通过名称注入时注意
+	setDao  则注入的是dao
+	setDao1 则注入的dao1-->
+
+	<bean id="dao" class="com.laoy.dao.IndexDaoImpl"/>
+	<bean id="dao1" class="com.laoy.dao.IndexDaoImpl1"/>
+	<!--byName 或者 byType 可以单独只配-->
+	<bean id="indexService" class="com.laoy.dao.IndexService" autowire="byName"/>
+
+
+
+
+	<!--开启注解, 可以省略-->
+	<!--<context:annotation-config/>-->
+	<!--开启扫描 -->
+	<!--<context:component-scan base-package="com"/>-->
+	<!---->
+	<!--<bean id="indexDao" class="com.laoy.dao.IndexDaoImpl">
+		&lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;
+		<property name="str" value="nicai"/>
+		
+	</bean>-->
+
+	<!--<bean id="indexDao2" class="com.laoy.dao.IndexDaoImpl2" p:str2="你猜2">
+
+	</bean>-->
+	<!--set方法注入-->
+	<!--<bean id="indexService" class="com.laoy.dao.IndexService">
+		&lt;!&ndash; collaborators and configuration for this bean go here &ndash;&gt;
+		<property name="dao" ref="indexDao"/>
+	</bean>-->
+
+	<!--构造方法注入-->
+	<!--<bean id="indexService" class="com.laoy.dao.IndexService">
+		<constructor-arg ref="indexDao"/>
+	</bean>-->
+	<!--<bean id="indexService" class="com.laoy.dao.IndexService" c:dao-ref="indexDao"/>-->
+	<!-- more bean definitions go here -->
+
+</beans>
+
+
+<!--这是使用xml 方法  还有就是扫描 configuration
+spring 的三种编码风格:   三种混合使用
+schemal-based   -xml
+annotation-based    -annotation
+java-based  -java Configuration
+
+-->
