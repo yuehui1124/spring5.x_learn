@@ -7,7 +7,7 @@ public class IndexDaoImpl1 implements IndexDao {
 
 	@Override
 	public void test() {
-		System.out.println("impl test");
+		System.out.println("impl test1");
 		System.out.println(str);
 	}
 

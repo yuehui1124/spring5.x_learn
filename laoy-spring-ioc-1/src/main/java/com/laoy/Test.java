@@ -1,4 +1,4 @@
-package com.laoy.test;
+package com.laoy;
 
 import com.laoy.Service.IndexService;
 import com.laoy.config.AppConfig;

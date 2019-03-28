@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 /*@Service*/
 public class IndexService {
 	//@Autowired
+
 	private IndexDao dao;
 	//set方法注入
 	public void setDao1(IndexDao dao) {

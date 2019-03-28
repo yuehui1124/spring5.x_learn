@@ -1,4 +1,4 @@
-package com.laoy.test;
+package com.laoy;
 
 import com.laoy.config.AppConfig;
 import com.laoy.dao.IndexDao;

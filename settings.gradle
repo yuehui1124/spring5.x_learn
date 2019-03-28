@@ -33,4 +33,5 @@ include 'luban-test'
 include 'laoy-spring-ioc'
 include 'laoy-spring-ioc-1'
 include 'laoy-spring-aop'
+include 'laoy-test-demo'
 
